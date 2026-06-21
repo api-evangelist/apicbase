@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apicbase API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ingredients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ingredients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/ingredients/"
+          },
+          "docs": "Returns a paginated list of ingredients in the active library."
+        },
+        {
+          "info": {
+            "name": "Create an ingredient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apicbase.com/api/v2/products/ingredients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ingredient from a JSON object in the request body."
+        },
+        {
+          "info": {
+            "name": "Get ingredient details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/ingredients/{id}/"
+          },
+          "docs": "Returns details for a single ingredient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Recipes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get recipes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/recipes/"
+          },
+          "docs": "Returns a paginated list of recipes in the active library."
+        },
+        {
+          "info": {
+            "name": "Create a recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apicbase.com/api/v2/products/recipes/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new recipe."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get stock items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/stock_items/"
+          },
+          "docs": "Returns a paginated list of stock items."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Procurement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get purchase orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/procurement/purchase_orders/"
+          },
+          "docs": "Returns a paginated list of all purchase orders in the library."
+        },
+        {
+          "info": {
+            "name": "Create a purchase order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apicbase.com/api/v2/procurement/purchase_orders/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new purchase order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Suppliers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get suppliers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/suppliers/"
+          },
+          "docs": "Returns a paginated list of suppliers in the library."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outlets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get outlets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/accounts/outlets/"
+          },
+          "docs": "Returns a list of outlets in the library, complete with information about them."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "Apicbase API",
+    "description": "REST API for the Apicbase food & beverage back-of-house management platform. OAuth 2.0 bearer authentication; base URL https://api.apicbase.com.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.apicbase.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Ingredients",
+      "item": [
+        {
+          "name": "Get ingredients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/products/ingredients/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "products", "ingredients", ""]
+            },
+            "description": "Returns a paginated list of ingredients in the active library."
+          }
+        },
+        {
+          "name": "Create an ingredient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"internal_uid\": \"<string>\",\n  \"category\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/products/ingredients/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "products", "ingredients", ""]
+            },
+            "description": "Creates a new ingredient from a JSON object in the request body."
+          }
+        },
+        {
+          "name": "Get ingredient details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/products/ingredients/{id}/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "products", "ingredients", "{id}", ""]
+            },
+            "description": "Returns details for a single ingredient."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recipes",
+      "item": [
+        {
+          "name": "Get recipes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/products/recipes/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "products", "recipes", ""]
+            },
+            "description": "Returns a paginated list of recipes in the active library."
+          }
+        },
+        {
+          "name": "Create a recipe",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"uid\": \"<string>\",\n  \"category\": \"<string>\",\n  \"sell_price\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/products/recipes/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "products", "recipes", ""]
+            },
+            "description": "Creates a new recipe."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stock",
+      "item": [
+        {
+          "name": "Get stock items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/products/stock_items/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "products", "stock_items", ""]
+            },
+            "description": "Returns a paginated list of stock items."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Procurement",
+      "item": [
+        {
+          "name": "Get purchase orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/procurement/purchase_orders/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "procurement", "purchase_orders", ""]
+            },
+            "description": "Returns a paginated list of all purchase orders in the library."
+          }
+        },
+        {
+          "name": "Create a purchase order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"supplier\": \"<string>\",\n  \"outlet\": \"<string>\",\n  \"expected_delivery_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/procurement/purchase_orders/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "procurement", "purchase_orders", ""]
+            },
+            "description": "Creates a new purchase order."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Suppliers",
+      "item": [
+        {
+          "name": "Get suppliers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/suppliers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "suppliers", ""]
+            },
+            "description": "Returns a paginated list of suppliers in the library."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Outlets",
+      "item": [
+        {
+          "name": "Get outlets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v2/accounts/outlets/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v2", "accounts", "outlets", ""]
+            },
+            "description": "Returns a list of outlets in the library, complete with information about them."
+          }
+        }
+      ]
+    }
+  ]
+}

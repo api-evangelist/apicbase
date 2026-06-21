@@ -1,0 +1,73 @@
+aid: apicbase
+name: Apicbase
+review:
+  question: Does Apicbase expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Apicbase's only documented event-driven
+    surface is outbound HTTP webhooks for integrated ordering, which are
+    arranged manually with Apicbase support rather than self-served through a
+    documented subscription API. No WebSocket or Server-Sent Events transport
+    is documented, so there is no in-scope streaming surface to model at this
+    time.
+findings:
+  summary: |
+    Apicbase does not publish a documented public WebSocket API. The platform
+    exposes a RESTful HTTPS API under https://api.apicbase.com (paths under
+    /api/v2/...) secured with OAuth 2.0 bearer tokens. The only event-driven
+    integration documented is outbound webhooks: when an order is placed,
+    Apicbase POSTs it to a partner-supplied HTTPS endpoint, signed with an
+    X-APIC-WEBHOOK-SIGNATURE header. Webhook setup is arranged with Apicbase
+    support, not via a self-service subscription API. No realtime,
+    bidirectional, or audio WebSocket (ws:// or wss://) endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.apicbase.com
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP callbacks for integrated ordering, POSTed to a partner endpoint and signed with X-APIC-WEBHOOK-SIGNATURE. Not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Apicbase API reference or guides as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://api.apicbase.com/api/v2/products/ingredients/
+    - POST https://api.apicbase.com/api/v2/products/ingredients/
+    - GET  https://api.apicbase.com/api/v2/products/recipes/
+    - POST https://api.apicbase.com/api/v2/products/recipes/
+    - GET  https://api.apicbase.com/api/v2/products/stock_items/
+    - GET  https://api.apicbase.com/api/v2/procurement/purchase_orders/
+    - POST https://api.apicbase.com/api/v2/procurement/purchase_orders/
+    - GET  https://api.apicbase.com/api/v2/suppliers/
+    - GET  https://api.apicbase.com/api/v2/accounts/outlets/
+    - POST https://api.apicbase.com/oauth/token/
+sources:
+  - url: https://developers.apicbase.com/docs/welcome
+    type: Documentation
+    note: Developer portal overview; REST API with OAuth 2.0. No WebSocket mentioned.
+  - url: https://developers.apicbase.com/docs/authentication
+    type: Documentation
+    note: OAuth 2.0 authorization-code flow; bearer access tokens valid 7 days; token URL https://api.apicbase.com/oauth/token/.
+  - url: https://developers.apicbase.com/reference/introduction
+    type: APIReference
+    note: Versioned REST endpoints under /api/v2/... All documented surfaces are HTTPS REST.
+  - url: https://developers.apicbase.com/docs/integrated-ordering
+    type: Documentation
+    note: Webhooks deliver orders via HTTP POST to a partner endpoint signed with X-APIC-WEBHOOK-SIGNATURE; not WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and the only event-driven mechanism
+    is manually-provisioned outbound HTTP webhooks rather than a documented
+    streaming/subscription API. No AsyncAPI document was authored; the webhook
+    surface is described in apis.yml and this review.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

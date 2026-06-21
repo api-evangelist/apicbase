@@ -1,0 +1,59 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Apicbase
+providerId: apicbase
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Food and Beverage
+- Restaurant
+- Back of House
+- Inventory
+- Procurement
+- Recipes
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Apicbase REST API is a subscription-included interface secured with
+  OAuth 2.0 bearer tokens. The public developer documentation does not publish
+  specific numeric request rate limits, quotas, or throttling thresholds.
+  List endpoints are paginated (via a page parameter), which bounds response
+  size. Specific per-account or per-endpoint rate-limit values are not
+  reconciled in this artifact.
+notes: >-
+  Confirm any throttling behavior, retry guidance, and 429 handling directly
+  with Apicbase or in the developer portal on reconciliation. Access tokens
+  expire after 7 days and must be refreshed.
+sources:
+- https://developers.apicbase.com/docs/authentication
+- https://developers.apicbase.com/reference/introduction
+- https://developers.apicbase.com/docs/welcome
+responseCodes:
+  throttled: 429
+limits:
+- name: Request Rate
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: No public numeric request rate limit is documented; verify on reconciliation.
+- name: Pagination
+  scope: endpoint
+  metric: records_per_page
+  limit: see provider documentation
+  notes: List endpoints are paginated via the page query parameter.
+- name: Access Token Lifetime
+  scope: token
+  metric: seconds
+  limit: 604800
+  notes: OAuth 2.0 access tokens expire after 7 days; refresh tokens issue new access tokens.
+policies:
+- name: OAuth 2.0 Bearer Authentication
+  description: All requests must use HTTPS and present a valid bearer access token in the Authorization header.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,195 @@
+aid: apicbase
+url: https://raw.githubusercontent.com/api-evangelist/apicbase/refs/heads/main/apis.yml
+name: Apicbase
+kind: company
+description: Apicbase is a cloud-based food & beverage back-of-house management platform
+  for restaurants, hotels, and catering groups, covering recipes and menu engineering,
+  ingredient libraries, inventory and stock, procurement, suppliers, and multi-outlet
+  operations. The Apicbase REST API exposes these entities over HTTPS with OAuth 2.0
+  authentication, plus webhooks for integrated supplier ordering.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Food and Beverage
+- Restaurant
+- Back of House
+- Inventory
+- Procurement
+- Recipes
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: apicbase:ingredients
+  name: Apicbase Ingredients API
+  tags:
+  - Ingredients
+  - Library
+  - Allergens
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/get-ingredients
+  baseURL: https://api.apicbase.com/api/v2/products/ingredients
+  properties:
+  - url: https://developers.apicbase.com/reference/get-ingredients
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: List, create, edit, clone, and merge ingredients in the library, with
+    extensive filtering by category, supplier, allergen verification, and custom fields.
+- aid: apicbase:recipes
+  name: Apicbase Recipes API
+  tags:
+  - Recipes
+  - Menus
+  - Menu Engineering
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/get-recipes
+  baseURL: https://api.apicbase.com/api/v2/products/recipes
+  properties:
+  - url: https://developers.apicbase.com/reference/get-recipes
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: Create, edit, clone, and retrieve recipes and menus, including financial,
+    nutritional, and bill-of-materials (BOM) calculations.
+- aid: apicbase:products
+  name: Apicbase Products API
+  tags:
+  - Products
+  - POS Items
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/introduction
+  baseURL: https://api.apicbase.com/api/v2/products
+  properties:
+  - url: https://developers.apicbase.com/reference/introduction
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: Product development entities spanning ingredients, recipes, and stock
+    items, modeling sellable finished products and POS-linkable catalog items.
+- aid: apicbase:inventory-stock
+  name: Apicbase Inventory & Stock API
+  tags:
+  - Inventory
+  - Stock
+  - Stock Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/get-stock-items
+  baseURL: https://api.apicbase.com/api/v2/products/stock_items
+  properties:
+  - url: https://developers.apicbase.com/reference/get-stock-items
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: List, create, and edit stock items and inventory levels, plus stock
+    events for waste, production, sales, transfers, and stock counts.
+- aid: apicbase:purchase-orders
+  name: Apicbase Purchase Orders API
+  tags:
+  - Purchase Orders
+  - Procurement
+  - Ordering
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/get-purchase-orders
+  baseURL: https://api.apicbase.com/api/v2/procurement/purchase_orders
+  properties:
+  - url: https://developers.apicbase.com/reference/get-purchase-orders
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: Create, send, retrieve, and delete purchase orders, filterable by supplier,
+    outlet, status (IN_PROGRESS, ORDERED, DELIVERED), and delivery dates.
+- aid: apicbase:suppliers
+  name: Apicbase Suppliers API
+  tags:
+  - Suppliers
+  - Vendors
+  - Packages
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/get-suppliers
+  baseURL: https://api.apicbase.com/api/v2/suppliers
+  properties:
+  - url: https://developers.apicbase.com/reference/get-suppliers
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: List, create, and edit suppliers and their packages, filterable by company
+    name, email, or VAT number, including supplier ordering details.
+- aid: apicbase:outlets
+  name: Apicbase Outlets API
+  tags:
+  - Outlets
+  - Locations
+  - Accounts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/reference/get-outlets
+  baseURL: https://api.apicbase.com/api/v2/accounts/outlets
+  properties:
+  - url: https://developers.apicbase.com/reference/get-outlets
+    type: APIReference
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  - url: collections/apicbase.postman_collection.json
+    type: PostmanCollection
+  - url: collections/apicbase.opencollection.json
+    type: OpenCollection
+  description: List, create, and edit outlets (locations) in the library, with name
+    and custom-field filtering for multi-site operations.
+- aid: apicbase:webhooks
+  name: Apicbase Webhooks
+  tags:
+  - Webhooks
+  - Events
+  - Integrated Ordering
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.apicbase.com/docs/integrated-ordering
+  baseURL: https://api.apicbase.com
+  properties:
+  - url: https://developers.apicbase.com/docs/integrated-ordering
+    type: Documentation
+  - url: openapi/apicbase-openapi.yml
+    type: OpenAPI
+  description: Outbound webhooks deliver orders to a partner-supplied HTTPS endpoint
+    the moment an order is placed, signed with an X-APIC-WEBHOOK-SIGNATURE header.
+common:
+- type: GitHubOrganization
+  url: https://github.com/APICBASE
+- type: LinkedIn
+  url: https://www.linkedin.com/company/apicbase
+- type: Website
+  url: https://www.apicbase.com
+- type: Documentation
+  url: https://developers.apicbase.com/docs/welcome
+- type: Plans
+  url: plans/apicbase-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/apicbase-rate-limits.yml
+- type: FinOps
+  url: finops/apicbase-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,126 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Apicbase
+providerId: apicbase
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Food and Beverage
+- Restaurant
+- Back of House
+- Inventory
+- Procurement
+- Recipes
+- Plans
+description: >-
+  Apicbase is sold as a subscription SaaS platform priced by number of outlets
+  and selected modules (menu engineering, inventory, procurement, production,
+  analytics). Pricing is sales-led: published starting points exist but final
+  pricing is quoted per customer and is not fully reconciled here. There is no
+  free tier, though a free trial is offered. API access is included with the
+  platform subscription rather than metered separately.
+notes: >-
+  Publicly cited starting points (e.g., a single-outlet bundle around $160/mo
+  and module pricing from roughly $249/mo) vary by source and date and require
+  a quote to confirm. Verify against the Apicbase pricing page on reconciliation.
+sources:
+- https://get.apicbase.com/pricing-plans/
+- https://get.apicbase.com/get-a-quote/
+- https://www.apicbase.com
+plans:
+- id: apicbase-single-outlet
+  name: Single Outlet Bundle
+  type: subscription
+  description: >-
+    Entry bundle for an individual location, extendable with add-on modules.
+    Exact pricing is quoted; a publicly cited starting point is around
+    $160/month but is not reconciled.
+  entries:
+  - label: Single Outlet Subscription
+    name: single_outlet
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (starting point ~$160/mo, not reconciled)
+    userMultiplied: false
+  elements:
+  - name: Recipe & Menu Library
+  - name: Inventory
+  - name: Procurement
+  - name: API Access
+- id: apicbase-multi-outlet
+  name: Multi-Outlet / Restaurant Group
+  type: subscription
+  description: >-
+    Subscription for multi-site restaurant groups, priced per outlet plus
+    selected modules. Pricing is quoted per customer.
+  entries:
+  - label: Per-Outlet Subscription
+    name: per_outlet
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: true
+  elements:
+  - name: Multi-Outlet Management
+  - name: Menu Engineering
+  - name: Inventory & Stock
+  - name: Procurement & Suppliers
+  - name: Production Planning
+  - name: Sales Analytics
+  - name: API Access
+- id: apicbase-modules
+  name: Add-On Modules
+  type: subscription
+  description: >-
+    Optional modules added on top of a base subscription. Publicly cited
+    per-feature pricing starts around $249/month but varies and is not
+    reconciled.
+  entries:
+  - label: Add-On Module
+    name: module
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (per-feature starting point ~$249/mo, not reconciled)
+    userMultiplied: false
+  elements:
+  - name: Production
+  - name: Analytics
+  - name: Procurement
+- id: apicbase-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Volume agreements for large restaurant groups and chains with custom
+    module selection, onboarding, and support. Contact Apicbase sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: Onboarding & Support
+  - name: Integrations & API
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
