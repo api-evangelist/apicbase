@@ -176,6 +176,10 @@ apis:
   description: Outbound webhooks deliver orders to a partner-supplied HTTPS endpoint
     the moment an order is placed, signed with an X-APIC-WEBHOOK-SIGNATURE header.
 common:
+- type: DomainSecurity
+  url: security/apicbase-domain-security.yml
+- type: Authentication
+  url: authentication/apicbase-authentication.yml
 - type: OAuthScopes
   url: scopes/apicbase-scopes.yml
 - type: GitHubOrganization
