@@ -1,0 +1,227 @@
+openapi: 3.0.1
+info:
+  title: Apicbase Ingredients API
+  description: REST API for the Apicbase food & beverage back-of-house management platform. Exposes the product library (ingredients, recipes, stock items), inventory, procurement (purchase orders, suppliers), and outlets (accounts) over HTTPS with OAuth 2.0 bearer-token authentication. Endpoint paths, methods, and parameters in this document reflect the public developer documentation at https://developers.apicbase.com.
+  termsOfService: https://www.apicbase.com/terms-of-service
+  contact:
+    name: Apicbase API Support
+    url: https://developers.apicbase.com/docs/welcome
+  version: '2.0'
+servers:
+- url: https://api.apicbase.com
+  description: Apicbase production API
+security:
+- oauth2: []
+tags:
+- name: Ingredients
+  description: Ingredient library entities.
+paths:
+  /api/v2/products/ingredients/:
+    get:
+      operationId: listIngredients
+      tags:
+      - Ingredients
+      summary: Get ingredients
+      description: Returns a paginated list of ingredients in the active library.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Ordering'
+      - name: name
+        in: query
+        description: Filter by ingredient name in the library's native language.
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: Filter by category.
+        schema:
+          type: string
+      - name: supplier
+        in: query
+        description: Filter by supplier ID.
+        schema:
+          type: string
+      - name: allergen_verified
+        in: query
+        description: Filter by allergen verification status.
+        schema:
+          type: boolean
+      - name: internal_uid
+        in: query
+        description: Filter by internal reference number.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of ingredients.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedIngredientList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createIngredient
+      tags:
+      - Ingredients
+      summary: Create an ingredient
+      description: Creates a new ingredient from a JSON-serialized object in the request body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngredientWrite'
+      responses:
+        '201':
+          description: The created ingredient.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v2/products/ingredients/{id}/:
+    get:
+      operationId: getIngredient
+      tags:
+      - Ingredients
+      summary: Get ingredient details
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested ingredient.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Ingredient:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        short_name:
+          type: string
+        internal_uid:
+          type: string
+        category:
+          type: string
+        subcategory:
+          type: string
+        allergen_verified:
+          type: boolean
+        conversion_ratio:
+          type: number
+          format: float
+        shelf_life:
+          type: integer
+        approved:
+          type: boolean
+        in_use:
+          type: boolean
+        created_date:
+          type: string
+          format: date-time
+        modified_date:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+    IngredientWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        internal_uid:
+          type: string
+        category:
+          type: string
+    PaginatedIngredientList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Ingredient'
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier.
+      schema:
+        type: string
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow. Access tokens are bearer tokens valid for 7 days; refresh tokens obtain new access tokens. Include the token in the Authorization header as "Bearer ACCESS_TOKEN".
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.apicbase.com/oauth/authorize/
+          tokenUrl: https://api.apicbase.com/oauth/token/
+          refreshUrl: https://api.apicbase.com/oauth/token/
+          scopes:
+            accounts: Access account and outlet data.
+            library: Access library data (ingredients, recipes, stock).

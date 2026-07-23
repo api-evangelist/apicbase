@@ -1,0 +1,187 @@
+openapi: 3.0.1
+info:
+  title: Apicbase Ingredients Procurement API
+  description: REST API for the Apicbase food & beverage back-of-house management platform. Exposes the product library (ingredients, recipes, stock items), inventory, procurement (purchase orders, suppliers), and outlets (accounts) over HTTPS with OAuth 2.0 bearer-token authentication. Endpoint paths, methods, and parameters in this document reflect the public developer documentation at https://developers.apicbase.com.
+  termsOfService: https://www.apicbase.com/terms-of-service
+  contact:
+    name: Apicbase API Support
+    url: https://developers.apicbase.com/docs/welcome
+  version: '2.0'
+servers:
+- url: https://api.apicbase.com
+  description: Apicbase production API
+security:
+- oauth2: []
+tags:
+- name: Procurement
+  description: Purchase orders.
+paths:
+  /api/v2/procurement/purchase_orders/:
+    get:
+      operationId: listPurchaseOrders
+      tags:
+      - Procurement
+      summary: Get purchase orders
+      description: Returns a paginated list of all purchase orders in the library.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Ordering'
+      - name: supplier
+        in: query
+        description: Filter by supplier ID.
+        schema:
+          type: string
+      - name: outlet
+        in: query
+        description: Filter by outlet ID.
+        schema:
+          type: string
+      - name: order_number
+        in: query
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - ORDERED
+          - DELIVERED
+      responses:
+        '200':
+          description: A paginated list of purchase orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPurchaseOrderList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createPurchaseOrder
+      tags:
+      - Procurement
+      summary: Create a purchase order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderWrite'
+      responses:
+        '201':
+          description: The created purchase order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseOrder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    PurchaseOrder:
+      type: object
+      properties:
+        id:
+          type: string
+        order_number:
+          type: string
+        supplier:
+          type: string
+        outlet:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - ORDERED
+          - DELIVERED
+        ordered_on:
+          type: string
+          format: date-time
+        expected_delivery_date:
+          type: string
+          format: date
+        discount:
+          type: number
+          format: float
+    PurchaseOrderWrite:
+      type: object
+      required:
+      - supplier
+      - outlet
+      properties:
+        supplier:
+          type: string
+        outlet:
+          type: string
+        expected_delivery_date:
+          type: string
+          format: date
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+    PaginatedPurchaseOrderList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/PurchaseOrder'
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow. Access tokens are bearer tokens valid for 7 days; refresh tokens obtain new access tokens. Include the token in the Authorization header as "Bearer ACCESS_TOKEN".
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.apicbase.com/oauth/authorize/
+          tokenUrl: https://api.apicbase.com/oauth/token/
+          refreshUrl: https://api.apicbase.com/oauth/token/
+          scopes:
+            accounts: Access account and outlet data.
+            library: Access library data (ingredients, recipes, stock).
