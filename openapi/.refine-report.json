@@ -1,0 +1,24 @@
+{
+  "provider": "apicbase",
+  "sources": [
+    "apicbase-ingredients-api-openapi.yml",
+    "apicbase-outlets-api-openapi.yml",
+    "apicbase-procurement-api-openapi.yml",
+    "apicbase-recipes-api-openapi.yml",
+    "apicbase-stock-api-openapi.yml",
+    "apicbase-suppliers-api-openapi.yml"
+  ],
+  "outputs": [
+    "apicbase-ingredients-api-openapi.yml",
+    "apicbase-outlets-api-openapi.yml",
+    "apicbase-procurement-api-openapi.yml",
+    "apicbase-recipes-api-openapi.yml",
+    "apicbase-stock-api-openapi.yml",
+    "apicbase-suppliers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
