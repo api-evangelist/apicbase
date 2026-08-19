@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apicbase Ingredients Outlets API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://app.apicbase.com/oauth/authorize/",
+      "accessTokenUrl": "https://api.apicbase.com/oauth/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Outlets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get outlets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/accounts/outlets/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Field to order results by."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of outlets in the library, complete with information about them."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

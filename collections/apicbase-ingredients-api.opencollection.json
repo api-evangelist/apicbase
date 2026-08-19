@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apicbase Ingredients API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://app.apicbase.com/oauth/authorize/",
+      "accessTokenUrl": "https://api.apicbase.com/oauth/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ingredients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ingredients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/ingredients/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Field to order results by."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ingredient name in the library's native language."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by category."
+              },
+              {
+                "name": "supplier",
+                "value": "",
+                "type": "query",
+                "description": "Filter by supplier ID."
+              },
+              {
+                "name": "allergen_verified",
+                "value": "",
+                "type": "query",
+                "description": "Filter by allergen verification status."
+              },
+              {
+                "name": "internal_uid",
+                "value": "",
+                "type": "query",
+                "description": "Filter by internal reference number."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of ingredients in the active library."
+        },
+        {
+          "info": {
+            "name": "Create an ingredient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.apicbase.com/api/v2/products/ingredients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ingredient from a JSON-serialized object in the request body."
+        },
+        {
+          "info": {
+            "name": "Get ingredient details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/ingredients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier."
+              }
+            ]
+          },
+          "docs": "Get ingredient details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

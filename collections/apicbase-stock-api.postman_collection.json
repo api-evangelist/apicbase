@@ -1,0 +1,275 @@
+{
+  "item": [
+    {
+      "id": "aab09587-e0fb-4bbc-b984-235f193a4335",
+      "name": "Stock",
+      "description": {
+        "content": "Stock items and inventory.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ccd413e-5376-4db6-9f7b-b32acb26c36c",
+          "name": "Get stock items",
+          "request": {
+            "name": "Get stock items",
+            "description": {
+              "content": "Returns a paginated list of stock items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "products",
+                "stock_items",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number for paginated results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Field to order results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ingredient",
+                  "value": "<string>",
+                  "description": "Filter by ingredient ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "stockable",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "gtin",
+                  "value": "<string>",
+                  "description": "Filter by GTIN / EAN code."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f816deae-e065-407c-b59f-98add65c1108",
+              "name": "A paginated list of stock items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "products",
+                    "stock_items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ingredient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stockable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gtin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1802,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"ingredient\": \"string\",\n      \"stockable\": false,\n      \"weighted\": true,\n      \"gtin\": \"string\",\n      \"modified_date\": \"2018-02-07T02:30:57.509Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"ingredient\": \"string\",\n      \"stockable\": false,\n      \"weighted\": true,\n      \"gtin\": \"string\",\n      \"modified_date\": \"1992-04-27T13:06:24.332Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efde234e-9a2f-4fe3-af1a-128af5469d3f",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "products",
+                    "stock_items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ingredient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stockable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gtin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.apicbase.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "accounts library"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.apicbase.com/oauth/token/"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.apicbase.com/oauth/token/"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://app.apicbase.com/oauth/authorize/"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0eef6ceb-6b45-4886-8252-9efb945fac67",
+    "name": "Apicbase Ingredients Stock API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Apicbase food & beverage back-of-house management platform. Exposes the product library (ingredients, recipes, stock items), inventory, procurement (purchase orders, suppliers), and outlets (accounts) over HTTPS with OAuth 2.0 bearer-token authentication. Endpoint paths, methods, and parameters in this document reflect the public developer documentation at https://developers.apicbase.com.\n\nContact Support:\n Name: Apicbase API Support",
+      "type": "text/plain"
+    }
+  }
+}

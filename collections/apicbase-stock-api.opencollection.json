@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apicbase Ingredients Stock API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://app.apicbase.com/oauth/authorize/",
+      "accessTokenUrl": "https://api.apicbase.com/oauth/token/",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get stock items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.apicbase.com/api/v2/products/stock_items/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Field to order results by."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ingredient",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ingredient ID."
+              },
+              {
+                "name": "stockable",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "gtin",
+                "value": "",
+                "type": "query",
+                "description": "Filter by GTIN / EAN code."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of stock items."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
