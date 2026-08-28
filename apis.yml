@@ -7,6 +7,18 @@ description: Apicbase is a cloud-based food & beverage back-of-house management 
   ingredient libraries, inventory and stock, procurement, suppliers, and multi-outlet
   operations. The Apicbase REST API exposes these entities over HTTPS with OAuth 2.0
   authentication, plus webhooks for integrated supplier ordering.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
