@@ -225,6 +225,9 @@ apis:
   - type: Documentation
     url: https://developers.apicbase.com/docs/integrated-ordering
 common:
+- type: CapabilityMap
+  url: capabilities/apicbase-capability-edges.yml
+  name: Apicbase Business Capability Map
 - type: AgenticAccess
   url: agentic-access/apicbase-agentic-access.yml
 - type: DomainSecurity
