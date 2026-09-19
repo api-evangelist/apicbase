@@ -177,6 +177,8 @@ apis:
   humanURL: https://developers.apicbase.com/reference/get-ingredients
   baseURL: https://api.apicbase.com/api/v2/products/ingredients
   tags:
+  - Stocks
+  tags_raw:
   - Stock
   properties:
   - type: OpenAPI
