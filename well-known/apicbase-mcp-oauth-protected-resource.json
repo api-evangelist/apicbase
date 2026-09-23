@@ -1,0 +1,1 @@
+{"resource":"https://mcp.apicbase.com/mcp","authorization_servers":["https://mcp.apicbase.com/"],"scopes_supported":["openid","sales","inventory","library","accounts","procurement","media"],"bearer_methods_supported":["header"]}

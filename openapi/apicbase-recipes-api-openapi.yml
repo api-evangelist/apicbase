@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Apicbase Ingredients Recipes API
+  title: Apicbase Recipes API
   description: REST API for the Apicbase food & beverage back-of-house management platform. Exposes the product library (ingredients, recipes, stock items), inventory, procurement (purchase orders, suppliers), and outlets (accounts) over HTTPS with OAuth 2.0 bearer-token authentication. Endpoint paths, methods, and parameters in this document reflect the public developer documentation at https://developers.apicbase.com.
   termsOfService: https://www.apicbase.com/terms-of-service
   contact:
@@ -67,47 +67,26 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    PaginatedRecipeList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Recipe'
     Error:
       type: object
       properties:
         detail:
           type: string
           description: Human-readable error message.
-    RecipeWrite:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        uid:
-          type: string
-        category:
-          type: string
-        sell_price:
-          type: number
-          format: float
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type: string
-          nullable: true
-        previous:
-          type: string
-          nullable: true
     Recipe:
       type: object
       properties:
@@ -125,19 +104,42 @@ components:
         created_date:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+    RecipeWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        uid:
+          type: string
+        category:
+          type: string
+        sell_price:
+          type: number
+          format: float
+    PaginatedRecipeList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Recipe'
   parameters:
     Ordering:
       name: ordering
