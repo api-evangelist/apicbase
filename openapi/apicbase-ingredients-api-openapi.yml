@@ -104,13 +104,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    Page:
-      name: page
+    Ordering:
+      name: ordering
       in: query
-      description: Page number for paginated results.
+      description: Field to order results by.
       schema:
-        type: integer
-        format: int32
+        type: string
     IdPath:
       name: id
       in: path
@@ -118,38 +117,14 @@ components:
       description: Resource identifier.
       schema:
         type: string
-    Ordering:
-      name: ordering
+    Page:
+      name: page
       in: query
-      description: Field to order results by.
+      description: Page number for paginated results.
       schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        type: integer
+        format: int32
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     PaginatedIngredientList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -159,6 +134,12 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Ingredient'
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
     Pagination:
       type: object
       properties:
@@ -172,6 +153,17 @@ components:
           type:
           - string
           - 'null'
+    IngredientWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        internal_uid:
+          type: string
+        category:
+          type: string
     Ingredient:
       type: object
       properties:
@@ -204,17 +196,25 @@ components:
         modified_date:
           type: string
           format: date-time
-    IngredientWrite:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        internal_uid:
-          type: string
-        category:
-          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

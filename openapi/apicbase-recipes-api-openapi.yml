@@ -67,26 +67,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     Recipe:
       type: object
       properties:
@@ -104,19 +85,6 @@ components:
         created_date:
           type: string
           format: date-time
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
     RecipeWrite:
       type: object
       required:
@@ -131,6 +99,25 @@ components:
         sell_price:
           type: number
           format: float
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
     PaginatedRecipeList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -154,6 +141,19 @@ components:
       schema:
         type: integer
         format: int32
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

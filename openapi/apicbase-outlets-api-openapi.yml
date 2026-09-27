@@ -40,52 +40,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
-    Outlet:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        custom_fields:
-          type: object
-          additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-    PaginatedOutletList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Outlet'
   parameters:
     Ordering:
       name: ordering
@@ -100,6 +54,52 @@ components:
       schema:
         type: integer
         format: int32
+  schemas:
+    Outlet:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+    PaginatedOutletList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Outlet'
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

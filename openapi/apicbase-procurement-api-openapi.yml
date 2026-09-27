@@ -80,26 +80,21 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     PaginatedPurchaseOrderList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -109,32 +104,12 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/PurchaseOrder'
-    PurchaseOrder:
+    Error:
       type: object
       properties:
-        id:
+        detail:
           type: string
-        order_number:
-          type: string
-        supplier:
-          type: string
-        outlet:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - ORDERED
-          - DELIVERED
-        ordered_on:
-          type: string
-          format: date-time
-        expected_delivery_date:
-          type: string
-          format: date
-        discount:
-          type: number
-          format: float
+          description: Human-readable error message.
     PurchaseOrderWrite:
       type: object
       required:
@@ -161,20 +136,45 @@ components:
           type:
           - string
           - 'null'
-  parameters:
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      description: Page number for paginated results.
-      schema:
-        type: integer
-        format: int32
+    PurchaseOrder:
+      type: object
+      properties:
+        id:
+          type: string
+        order_number:
+          type: string
+        supplier:
+          type: string
+        outlet:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - ORDERED
+          - DELIVERED
+        ordered_on:
+          type: string
+          format: date-time
+        expected_delivery_date:
+          type: string
+          format: date
+        discount:
+          type: number
+          format: float
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2

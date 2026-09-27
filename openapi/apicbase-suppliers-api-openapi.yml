@@ -48,20 +48,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     Supplier:
       type: object
       properties:
@@ -73,6 +60,21 @@ components:
           type: string
         vat_number:
           type: string
+    PaginatedSupplierList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Supplier'
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
     Pagination:
       type: object
       properties:
@@ -86,15 +88,6 @@ components:
           type:
           - string
           - 'null'
-    PaginatedSupplierList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Supplier'
   parameters:
     Ordering:
       name: ordering
@@ -109,6 +102,13 @@ components:
       schema:
         type: integer
         format: int32
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     oauth2:
       type: oauth2
