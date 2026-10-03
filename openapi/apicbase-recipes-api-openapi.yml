@@ -68,6 +68,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
     Recipe:
       type: object
       properties:
@@ -85,6 +91,15 @@ components:
         created_date:
           type: string
           format: date-time
+    PaginatedRecipeList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Recipe'
     RecipeWrite:
       type: object
       required:
@@ -99,12 +114,6 @@ components:
         sell_price:
           type: number
           format: float
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     Pagination:
       type: object
       properties:
@@ -118,22 +127,7 @@ components:
           type:
           - string
           - 'null'
-    PaginatedRecipeList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Recipe'
   parameters:
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
     Page:
       name: page
       in: query
@@ -141,6 +135,12 @@ components:
       schema:
         type: integer
         format: int32
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Missing or invalid access token.

@@ -104,12 +104,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
     IdPath:
       name: id
       in: path
@@ -124,35 +118,19 @@ components:
       schema:
         type: integer
         format: int32
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
   schemas:
-    PaginatedIngredientList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Ingredient'
     Error:
       type: object
       properties:
         detail:
           type: string
           description: Human-readable error message.
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
     IngredientWrite:
       type: object
       required:
@@ -164,6 +142,15 @@ components:
           type: string
         category:
           type: string
+    PaginatedIngredientList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Ingredient'
     Ingredient:
       type: object
       properties:
@@ -196,6 +183,19 @@ components:
         modified_date:
           type: string
           format: date-time
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
   responses:
     Unauthorized:
       description: Missing or invalid access token.
@@ -203,14 +203,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request was malformed or failed validation.
       content:
         application/json:
           schema:

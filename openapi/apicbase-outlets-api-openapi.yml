@@ -40,31 +40,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      description: Page number for paginated results.
-      schema:
-        type: integer
-        format: int32
   schemas:
-    Outlet:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        custom_fields:
-          type: object
-          additionalProperties: true
     PaginatedOutletList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -80,6 +56,16 @@ components:
         detail:
           type: string
           description: Human-readable error message.
+    Outlet:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
     Pagination:
       type: object
       properties:
@@ -93,6 +79,20 @@ components:
           type:
           - string
           - 'null'
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Missing or invalid access token.

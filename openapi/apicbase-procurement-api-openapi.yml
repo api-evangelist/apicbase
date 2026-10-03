@@ -80,30 +80,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      description: Page number for paginated results.
-      schema:
-        type: integer
-        format: int32
   schemas:
-    PaginatedPurchaseOrderList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/PurchaseOrder'
     Error:
       type: object
       properties:
@@ -123,19 +100,6 @@ components:
         expected_delivery_date:
           type: string
           format: date
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
     PurchaseOrder:
       type: object
       properties:
@@ -162,15 +126,51 @@ components:
         discount:
           type: number
           format: float
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+    PaginatedPurchaseOrderList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/PurchaseOrder'
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
   responses:
-    Unauthorized:
-      description: Missing or invalid access token.
+    BadRequest:
+      description: The request was malformed or failed validation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
+    Unauthorized:
+      description: Missing or invalid access token.
       content:
         application/json:
           schema:
