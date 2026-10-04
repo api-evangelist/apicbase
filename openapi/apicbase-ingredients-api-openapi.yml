@@ -103,6 +103,25 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     IdPath:
       name: id
@@ -125,23 +144,6 @@ components:
       schema:
         type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
-    IngredientWrite:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        internal_uid:
-          type: string
-        category:
-          type: string
     PaginatedIngredientList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -183,6 +185,12 @@ components:
         modified_date:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
     Pagination:
       type: object
       properties:
@@ -196,25 +204,17 @@ components:
           type:
           - string
           - 'null'
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    IngredientWrite:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        internal_uid:
+          type: string
+        category:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -54,22 +54,40 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
   schemas:
-    PaginatedStockItemList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/StockItem'
     Error:
       type: object
       properties:
         detail:
           type: string
           description: Human-readable error message.
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
     StockItem:
       type: object
       properties:
@@ -88,33 +106,15 @@ components:
         modified_date:
           type: string
           format: date-time
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: Page number for paginated results.
-      schema:
-        type: integer
-        format: int32
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
+    PaginatedStockItemList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/StockItem'
   responses:
     Unauthorized:
       description: Missing or invalid access token.

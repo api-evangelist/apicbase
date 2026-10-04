@@ -81,12 +81,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     PurchaseOrderWrite:
       type: object
       required:
@@ -100,6 +94,15 @@ components:
         expected_delivery_date:
           type: string
           format: date
+    PaginatedPurchaseOrderList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/PurchaseOrder'
     PurchaseOrder:
       type: object
       properties:
@@ -126,6 +129,12 @@ components:
         discount:
           type: number
           format: float
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
     Pagination:
       type: object
       properties:
@@ -139,15 +148,6 @@ components:
           type:
           - string
           - 'null'
-    PaginatedPurchaseOrderList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/PurchaseOrder'
   parameters:
     Page:
       name: page

@@ -41,6 +41,16 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Outlet:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
     PaginatedOutletList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -56,16 +66,6 @@ components:
         detail:
           type: string
           description: Human-readable error message.
-    Outlet:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        custom_fields:
-          type: object
-          additionalProperties: true
     Pagination:
       type: object
       properties:
