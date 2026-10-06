@@ -51,7 +51,7 @@ tags_raw:
 - Procurement
 - Recipes
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: apicbase:apicbase-ingredients-api
@@ -237,6 +237,10 @@ apis:
   - type: Documentation
     url: https://developers.apicbase.com/docs/integrated-ordering
 common:
+- url: https://get.apicbase.com/blog/
+  type: Blog
+- url: https://get.apicbase.com/feed/
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/apicbase-capability-edges.yml
   name: Apicbase Business Capability Map
