@@ -81,28 +81,19 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    PurchaseOrderWrite:
+    Pagination:
       type: object
-      required:
-      - supplier
-      - outlet
       properties:
-        supplier:
-          type: string
-        outlet:
-          type: string
-        expected_delivery_date:
-          type: string
-          format: date
-    PaginatedPurchaseOrderList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/PurchaseOrder'
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
     PurchaseOrder:
       type: object
       properties:
@@ -135,33 +126,28 @@ components:
         detail:
           type: string
           description: Human-readable error message.
-    Pagination:
+    PaginatedPurchaseOrderList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/PurchaseOrder'
+    PurchaseOrderWrite:
       type: object
+      required:
+      - supplier
+      - outlet
       properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: Page number for paginated results.
-      schema:
-        type: integer
-        format: int32
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
+        supplier:
+          type: string
+        outlet:
+          type: string
+        expected_delivery_date:
+          type: string
+          format: date
   responses:
     BadRequest:
       description: The request was malformed or failed validation.
@@ -175,6 +161,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
   securitySchemes:
     oauth2:
       type: oauth2

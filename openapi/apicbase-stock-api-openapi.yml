@@ -54,27 +54,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: Page number for paginated results.
-      schema:
-        type: integer
-        format: int32
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
     Pagination:
       type: object
       properties:
@@ -106,6 +86,12 @@ components:
         modified_date:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
     PaginatedStockItemList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -115,6 +101,20 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/StockItem'
+  parameters:
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: Page number for paginated results.
+      schema:
+        type: integer
+        format: int32
   responses:
     Unauthorized:
       description: Missing or invalid access token.

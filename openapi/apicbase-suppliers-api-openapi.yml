@@ -62,6 +62,15 @@ components:
           type:
           - string
           - 'null'
+    PaginatedSupplierList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Supplier'
     Error:
       type: object
       properties:
@@ -79,16 +88,13 @@ components:
           type: string
         vat_number:
           type: string
-    PaginatedSupplierList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Supplier'
   parameters:
+    Ordering:
+      name: ordering
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
     Page:
       name: page
       in: query
@@ -96,12 +102,6 @@ components:
       schema:
         type: integer
         format: int32
-    Ordering:
-      name: ordering
-      in: query
-      description: Field to order results by.
-      schema:
-        type: string
   responses:
     Unauthorized:
       description: Missing or invalid access token.
