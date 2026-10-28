@@ -1,4 +1,4 @@
-# Apicbase (apicbase)
+# Apicbase
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,193 +66,140 @@
 
 Apicbase is a cloud-based food & beverage back-of-house management platform for restaurants, hotels, and catering groups, covering recipes and menu engineering, ingredient libraries, inventory and stock, procurement, suppliers, and multi-outlet operations. The Apicbase REST API exposes these entities over HTTPS with OAuth 2.0 authentication, plus webhooks for integrated supplier ordering.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/apicbase/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/apicbase/refs/heads/main/apis.yml)
+**Areas:** Food and Beverage · Restaurant · Back Of House · Inventory · Procurement · Recipes
 
-## Tags
+## Apicbase on APIs.io
 
-- Food and Beverage
-- Restaurant
-- Back of House
-- Inventory
-- Procurement
-- Recipes
+Everything profiled for Apicbase is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apicbase/](https://apis.io/providers/apicbase/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Apicbase Ingredients API](https://apis.io/apis/apicbase/apicbase-ingredients-api/) — Ingredient library entities.
+- [Apicbase Outlets API](https://apis.io/apis/apicbase/apicbase-outlets-api/) — Outlets (locations / accounts).
+- [Apicbase Procurement API](https://apis.io/apis/apicbase/apicbase-procurement-api/) — Purchase orders.
+- [Apicbase Recipes API](https://apis.io/apis/apicbase/apicbase-recipes-api/) — Recipes and menu engineering entities.
+- [Apicbase Stock API](https://apis.io/apis/apicbase/apicbase-stock-api/) — Stock items and inventory.
+- [Apicbase Suppliers API](https://apis.io/apis/apicbase/apicbase-suppliers-api/) — Suppliers and their packages.
 
-## APIs
+### Published properties
 
-### Apicbase Ingredients API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-List, create, edit, clone, and merge ingredients in the library, with extensive filtering by category, supplier, allergen verification, and custom fields.
+#### MCP servers (1)
 
-- **Human URL:** [https://developers.apicbase.com/reference/get-ingredients](https://developers.apicbase.com/reference/get-ingredients)
-- **Base URL:** `https://api.apicbase.com/api/v2/products/ingredients`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [apicbase](https://apis.io/servers/apicbase/apicbase/)
 
-- Ingredients
-- Library
-- Allergens
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [API Reference](https://developers.apicbase.com/reference/get-ingredients)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Apicbase Agentic Access](https://apis.io/agentic-access/apicbase/apicbase-agentic-access/)
 
-### Apicbase Recipes API
+#### Collections (7)
 
-Create, edit, clone, and retrieve recipes and menus, including financial, nutritional, and bill-of-materials (BOM) calculations.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://developers.apicbase.com/reference/get-recipes](https://developers.apicbase.com/reference/get-recipes)
-- **Base URL:** `https://api.apicbase.com/api/v2/products/recipes`
+- [Apicbase API](https://apis.io/collections/apicbase/open-apicbase/)
+- [Apicbase Ingredients API](https://apis.io/collections/apicbase/open-apicbase-ingredients-api/)
+- [Apicbase Ingredients Outlets API](https://apis.io/collections/apicbase/open-apicbase-outlets-api/)
+- [Apicbase Ingredients Procurement API](https://apis.io/collections/apicbase/open-apicbase-procurement-api/)
+- [Apicbase Ingredients Recipes API](https://apis.io/collections/apicbase/open-apicbase-recipes-api/)
+- [Apicbase Ingredients Stock API](https://apis.io/collections/apicbase/open-apicbase-stock-api/)
+- [Apicbase Ingredients Suppliers API](https://apis.io/collections/apicbase/open-apicbase-suppliers-api/)
 
-#### Tags
+#### Security (2)
 
-- Recipes
-- Menus
-- Menu Engineering
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Apicbase Authentication](https://apis.io/security/apicbase/apicbase-authentication/)
+- [Apicbase Domain Security](https://apis.io/security/apicbase/apicbase-domain-security/)
 
-- [API Reference](https://developers.apicbase.com/reference/get-recipes)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### OAuth scopes (1)
 
-### Apicbase Products API
+The permissions the API asks for.
 
-Product development entities spanning ingredients, recipes, and stock items, modeling sellable finished products and POS-linkable catalog items.
+- [Apicbase Scopes](https://apis.io/scopes/apicbase/apicbase-scopes/)
 
-- **Human URL:** [https://developers.apicbase.com/reference/introduction](https://developers.apicbase.com/reference/introduction)
-- **Base URL:** `https://api.apicbase.com/api/v2/products`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Products
-- POS Items
-- Catalog
+- [Apicbase Plans Pricing](https://apis.io/plans/apicbase/apicbase-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [API Reference](https://developers.apicbase.com/reference/introduction)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Apicbase Inventory & Stock API
+- [Apicbase Rate Limits](https://apis.io/rate-limits/apicbase/apicbase-rate-limits/)
 
-List, create, and edit stock items and inventory levels, plus stock events for waste, production, sales, transfers, and stock counts.
+#### FinOps (1)
 
-- **Human URL:** [https://developers.apicbase.com/reference/get-stock-items](https://developers.apicbase.com/reference/get-stock-items)
-- **Base URL:** `https://api.apicbase.com/api/v2/products/stock_items`
+What the API costs to run, by operation.
 
-#### Tags
+- [Apicbase Finops](https://apis.io/finops/apicbase/apicbase-finops/)
 
-- Inventory
-- Stock
-- Stock Events
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [API Reference](https://developers.apicbase.com/reference/get-stock-items)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Apicbase Purchase Orders API
-
-Create, send, retrieve, and delete purchase orders, filterable by supplier, outlet, status (IN_PROGRESS, ORDERED, DELIVERED), and delivery dates.
-
-- **Human URL:** [https://developers.apicbase.com/reference/get-purchase-orders](https://developers.apicbase.com/reference/get-purchase-orders)
-- **Base URL:** `https://api.apicbase.com/api/v2/procurement/purchase_orders`
-
-#### Tags
-
-- Purchase Orders
-- Procurement
-- Ordering
-
-#### Properties
-
-- [API Reference](https://developers.apicbase.com/reference/get-purchase-orders)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Apicbase Suppliers API
-
-List, create, and edit suppliers and their packages, filterable by company name, email, or VAT number, including supplier ordering details.
-
-- **Human URL:** [https://developers.apicbase.com/reference/get-suppliers](https://developers.apicbase.com/reference/get-suppliers)
-- **Base URL:** `https://api.apicbase.com/api/v2/suppliers`
-
-#### Tags
-
-- Suppliers
-- Vendors
-- Packages
-
-#### Properties
-
-- [API Reference](https://developers.apicbase.com/reference/get-suppliers)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Apicbase Outlets API
-
-List, create, and edit outlets (locations) in the library, with name and custom-field filtering for multi-site operations.
-
-- **Human URL:** [https://developers.apicbase.com/reference/get-outlets](https://developers.apicbase.com/reference/get-outlets)
-- **Base URL:** `https://api.apicbase.com/api/v2/accounts/outlets`
-
-#### Tags
-
-- Outlets
-- Locations
-- Accounts
-
-#### Properties
-
-- [API Reference](https://developers.apicbase.com/reference/get-outlets)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apicbase.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apicbase.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Apicbase Webhooks
-
-Outbound webhooks deliver orders to a partner-supplied HTTPS endpoint the moment an order is placed, signed with an X-APIC-WEBHOOK-SIGNATURE header.
-
-- **Human URL:** [https://developers.apicbase.com/docs/integrated-ordering](https://developers.apicbase.com/docs/integrated-ordering)
-- **Base URL:** `https://api.apicbase.com`
-
-#### Tags
-
-- Webhooks
-- Events
-- Integrated Ordering
-
-#### Properties
-
-- [Documentation](https://developers.apicbase.com/docs/integrated-ordering)
-- [OpenAPI](openapi/apicbase-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/APICBASE)
-- [LinkedIn](https://www.linkedin.com/company/apicbase)
 - [Website](https://www.apicbase.com)
 - [Documentation](https://developers.apicbase.com/docs/welcome)
-- [Plans](plans/apicbase-plans-pricing.yml)
-- [Rate Limits](rate-limits/apicbase-rate-limits.yml)
-- [Fin Ops](finops/apicbase-finops.yml)
+- [Blog](https://get.apicbase.com/blog/)
+- [GitHub](https://github.com/APICBASE)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.1** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 49.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 7.9 |
+
+**Agent readiness 43.9** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apicbase/](https://apis.io/providers/apicbase/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apicbase: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apicbase/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
